@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 import datetime
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 
@@ -38,15 +39,15 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
-class User(models.Model):
-    username = models.CharField(max_length=100)
-    email = models.EmailField()
-    password_hash = models.CharField(max_length=64)
-    role = models.CharField(
-        max_length=50,
-        choices=Roles.choices,
-        default="User",
-    )
+# class User(models.Model):
+#     username = models.CharField(max_length=100)
+#     email = models.EmailField()
+#     password_hash = models.CharField(max_length=64)
+#     role = models.CharField(
+#         max_length=50,
+#         choices=Roles.choices,
+#         default="User",
+#     )
 
 class Virtuals(models.Model):
     id = models.UUIDField(
@@ -68,3 +69,21 @@ class Virtuals(models.Model):
     user_vm = models.CharField(max_length=64)
     password_vm = models.CharField(max_length=128)
     ignore_cert = models.BooleanField()
+
+class Audit_log(models.Model):
+    id = models.UUIDField(
+        primary_key = True, 
+        default = uuid.uuid4, 
+        editable = False
+    )
+    action = models.CharField(max_length=32)
+    time = models.DateTimeField(auto_now_add=True)
+    virtual_id = models.ForeignKey(
+        Virtuals,
+        on_delete=models.CASCADE
+    )
+    user_id = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE
+    )
+

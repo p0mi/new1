@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "corsheaders"
+    
+    
+    "rest_framework"
     
 ]
 
@@ -125,6 +127,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+#rest_framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Или другие разрешения
+    ],
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -135,3 +145,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+NOCODB_API_KEY = 'y_PpN6YOmeQHkTXLoLEGoJsif0AIWBrU7yO6tlSN'
+NOCODB_BASE_URL = 'https://app.nocodb.com/api/v2/' 
