@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: ./djangotutorial
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./djangotutorial:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
