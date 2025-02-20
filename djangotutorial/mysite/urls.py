@@ -17,11 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from polls.nocodb_utils_v2 import get_nocodb_data
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("polls/", include("polls.urls")),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('nocodb-data/', get_nocodb_data, name='nocodb_data'),
 ]
 
 
