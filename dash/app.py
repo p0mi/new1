@@ -8,7 +8,7 @@ import requests
 
 # Функция получения данных из NocoDB
 def get_nocodb_data():
-    url = "http://localhost:8000/nocodb-data/"
+    url = "http://0.0.0.0:8000/nocodb-data/"
     try:
         response = requests.get(url)
         if response.status_code == 200:
