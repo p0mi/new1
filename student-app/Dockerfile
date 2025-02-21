@@ -10,7 +10,7 @@ RUN curl -fsSL https://bun.sh/install | bash && \
     ln -s /root/.bun/bin/bun /usr/local/bin/bun
 
 # Копируем файлы зависимостей
-COPY package.json bun.lock ./
+COPY package.json bun.lockb ./
 
 # Устанавливаем зависимости
 RUN bun install
@@ -18,9 +18,8 @@ RUN bun install
 # Копируем исходный код
 COPY . .
 
-# Собираем приложение
-RUN bun run build
+# Экспонируем порт Vite (по умолчанию 5173)
+EXPOSE 5173
 
-EXPOSE 3000
-
-CMD ["bun", "run", "dev"]
+# Запускаем Vite в режиме разработки
+CMD ["bun", "run", "dev", "--host", "0.0.0.0", "--port", "5173"]
