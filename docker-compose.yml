@@ -1,18 +1,41 @@
-version: '3'
+version: '3.9'
+
 services:
-  web:
-    build: ./djangotutorial
-    command: python manage.py runserver 0.0.0.0:8000
+  frontend:
+    build:
+      context: ./student-app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     volumes:
-      - ./djangotutorial:/usr/src/app
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+
+  backend:
+    build:
+      context: ./djangotutorial
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    depends_on:
-      - db
-
-  db:
-    image: postgres
+    volumes:
+      - ./backend:/app
+      - sqlite_data:/app  # Том для сохранения db.sqlite3
     environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      - PYTHONUNBUFFERED=1
+
+  dash:
+    build:
+      context: ./dash
+      dockerfile: Dockerfile
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./dash:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - backend
+
+volumes:
+  sqlite_data:

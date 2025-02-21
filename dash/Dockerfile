@@ -1,10 +1,22 @@
-FROM python:3.10-slim-buster
+FROM python:3.11-slim
 
-WORKDIR /usr/src/dash
+WORKDIR /app
 
-COPY requirements.txt ./
+# Установка зависимостей системы
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Копируем файлы зависимостей
+COPY requirements.txt .
+
+# Установка Python зависимостей
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Копируем исходный код Dash
 COPY . .
 
-CMD ["python", "app.py"]
+# Запускаем Dash приложение
+CMD ["python", "dash_app.py"]
+
+EXPOSE 8050

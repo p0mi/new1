@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import Schedule from '/workspaces/new1/student-app/src/Schedule.tsx';
-import Homeworks from '/workspaces/new1/student-app/src/Homeworks.tsx';
-import FeedbackForm from '/workspaces/new1/student-app/src/FeedbackForm.tsx';
+import Schedule from './Schedule';
+import Homeworks from './Homeworks';
+import FeedbackForm from './FeedbackForm';
 import './App.css'
 
 const scheduleData = [

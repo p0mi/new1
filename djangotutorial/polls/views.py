@@ -1,6 +1,9 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 from .nocodb_utils_v2 import get_users
+from rest_framework import generics
+from .models import Virtuals
+from .serializers import ItemSerializer
 
 class UserListView(TemplateView):
     template_name = 'app/user_list.html'
@@ -18,3 +21,11 @@ class UserListView(TemplateView):
         context['records'] = records
         return context
 # Create your views here.
+
+class VirtualsListCreate(generics.ListCreateAPIView):
+    queryset = Virtuals.objects.all()
+    serializer_class = ItemSerializer
+
+class VitualsRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Virtuals.objects.all()
+    serializer_class = ItemSerializer
