@@ -10,7 +10,7 @@ RUN curl -fsSL https://bun.sh/install | bash && \
     ln -s /root/.bun/bin/bun /usr/local/bin/bun
 
 # Копируем файлы зависимостей
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 
 # Устанавливаем зависимости
 RUN bun install
