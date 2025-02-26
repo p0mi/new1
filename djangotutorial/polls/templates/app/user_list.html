@@ -1,0 +1,21 @@
+<!-- templates/app/user_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список записей</title>
+</head>
+<body>
+    <h1>Записи</h1>
+    {% if records.list %}
+        <ul>
+            {% for record in records.list %}
+                <li>ID: {{ record.Id }} | Имя пользователя: {{ record.username }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет записей.</p>
+    {% endif %}
+</body>
+</html>
