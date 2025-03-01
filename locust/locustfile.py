@@ -13,4 +13,23 @@ class WebsiteTestUser(HttpUser):
 
     @task(1)
     def hello_world(self):
-        self.client.get("http://localhost:8000")
+        self.client.get("https://expert-fiesta-rw95p5w5544h5x97-8000.app.github.dev/")
+    
+    @task(2)
+    def nocodb(self):
+        self.client.get("https://expert-fiesta-rw95p5w5544h5x97-8000.app.github.dev/nocodb-data/")
+
+    @task(5)
+    def admin(self):
+        self.client.post("https://expert-fiesta-rw95p5w5544h5x97-8000.app.github.dev/admin/login/?next=/admin/", {"username": "admin", "password": "123123"})
+
+    @task(3)
+    def virtuals(self):
+        self.client.get("https://expert-fiesta-rw95p5w5544h5x97-8000.app.github.dev/polls/virtuals/")
+
+    @task(4)
+    def polls(self):
+        self.client.get("https://expert-fiesta-rw95p5w5544h5x97-8000.app.github.dev/polls/")
+    
+
+    
