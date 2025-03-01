@@ -20,7 +20,7 @@ class UserListView(TemplateView):
         
         context['records'] = records
         return context
-# Create your views here.
+
 
 class VirtualsListCreate(generics.ListCreateAPIView):
     queryset = Virtuals.objects.all()

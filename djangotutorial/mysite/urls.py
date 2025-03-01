@@ -19,6 +19,19 @@ from django.contrib import admin
 from django.urls import path, include
 from polls.nocodb_utils_v2 import get_nocodb_data
 from . import views
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
+
+schema_view = get_schema_view(
+       openapi.Info(
+           title="My API",
+           default_version='v1',
+           description="API documentation for My Django Project",
+       ),
+       public=True,
+       permission_classes=(permissions.AllowAny,),
+   )
 
 urlpatterns = [
     path('', views.api_root, name='api-root'),
@@ -26,6 +39,8 @@ urlpatterns = [
     path("polls/", include("polls.urls")),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('nocodb-data/', get_nocodb_data, name='nocodb_data'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
 
