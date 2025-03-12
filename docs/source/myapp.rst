@@ -1,5 +1,7 @@
 Модули
 -------------
 
-.. automodule:: djangotutorial
+.. automodule:: djangotutorial.polls
     :members:
+
+

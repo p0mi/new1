@@ -1,7 +1,13 @@
 import os
 import sys
+from django.conf import settings
+from django.core.wsgi import get_wsgi_application
 
-sys.path.insert(0, os.path.abspath('...'))
+
+
+sys.path.insert(0, os.path.abspath('/workspaces/new1'))
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangotutorial.mysite.settings")
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -22,7 +28,7 @@ extensions = [
     'sphinx.ext.autodoc',
     ]
 
-autodoc_mock_imports = ["djangotutorial"]
+# autodoc_mock_imports = ["djangotutorial"]
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -33,4 +39,6 @@ language = 'ru'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
-html_static_path = ['_static']
+# html_static_path = ['_static']
+
+
