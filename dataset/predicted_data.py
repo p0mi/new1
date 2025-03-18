@@ -61,15 +61,15 @@ def predict_house_price(model, label_encoders, imputer, scaler, new_data, origin
 # Пример использования функции
 if __name__ == "__main__":
     # Определяем список всех признаков из обучающего набора данных
-    original_columns = list(data.drop(columns=['Price']).columns)
+    original_columns = list(joblib.load("original_columns.pkl"))
     
     # Пример новых данных (словарь с характеристиками дома)
     new_house = {
         "Size": 1500,              # Размер дома (в квадратных футах)
         "Resale": "0",            # Является ли дом вторичным
-        "Gymnasium": "0",         # Наличие тренажерного зала
+        "Gymnasium": "1",         # Наличие тренажерного зала
         "SwimmingPool": "1",      # Наличие бассейна
-        "Area": "1000"            # Район
+        "Area": "10000"            # Район
     }
     
     # Вызываем функцию для предсказания
