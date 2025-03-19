@@ -1,9 +1,6 @@
 import os
 import sys
-from pathlib import Path
-from django.conf import settings
-from django.core.wsgi import get_wsgi_application
-import django
+
 
 
 sys.path.insert(0, os.path.abspath(os.path.join('..', '..', 'djangotutorial')))
