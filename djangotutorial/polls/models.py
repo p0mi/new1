@@ -29,6 +29,18 @@ class Question(models.Model):
         return self.question_text
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    """ Краткое описание класса. Более подробное описание класса, если необходимо. Attributes: attr1 (str): Описание атрибута. attr2 (int): Описание атрибута. Methods: method1(param1, param2): Описание метода. Args: param1 (int): Описание параметра. param2 (str): Описание параметра. Returns: str: Описание возвращаемого значения. Raises: ValueError: Если параметр param1 меньше 0. """
+
+    def __init__(self, attr1, attr2):
+        """ Конструктор класса. Args: attr1 (str): Описание атрибута. attr2 (int): Описание атрибута. """
+        self.attr1 = attr1
+        self.attr2 = attr2
+
+    def method1(self, param1, param2):
+        """ Описание метода. Args: param1 (int): Описание параметра. param2 (str): Описание параметра. Returns: str: Описание возвращаемого значения. Raises: ValueError: Если параметр param1 меньше 0. """
+        if param1 < 0:
+            raise ValueError("param1 must be non-negative")
+        return f"{param1} {param2}"
 
 
 
